@@ -1,5 +1,10 @@
-
+const jwt =require('jsonwebtoken')
 const userModel=require("../models/userModel");
+// const bcrypt = require('bcrypt');
+// const jwt = require('jsonwebtoken')
+const isValidBody = (value) => {
+    return Object.keys(value).length > 0;
+}
 
 const aws = require('./awsConfig')
 const bcrypt = require('bcrypt')
@@ -273,3 +278,12 @@ const UpdateUser = async function (req, res) {
 }
 
 module.exports.UpdateUser=UpdateUser
+
+
+
+
+
+
+
+
+
