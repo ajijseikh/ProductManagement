@@ -11,8 +11,8 @@ app.use(express.json())
 
 app.use( multer().any())
 
-const url="";
-mongoose.connect(url,{useNewUrlParser: true})
+// const url="";
+mongoose.connect("mongodb+srv://plutonium-batch:CD0Y7Vi1xxgIRocV@cluster0.78bw9.mongodb.net/test",{useNewUrlParser: true})
 .then(()=>console.log("MongoDb is Connected"))
 .catch(err=>console.log(err))
 
