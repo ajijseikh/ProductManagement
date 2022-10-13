@@ -44,10 +44,10 @@ const isValidS3Url = function(url)
 }
 
 
-// const acceptFileType = (file, ...types) => {
-//     console.log(file.mimetype);
-//     return types.indexOf(file.mimetype) !== -1 ? true : false
-// }
+const acceptFileType = (file, ...types) => {
+    console.log(file.mimetype);
+    return types.indexOf(file.mimetype) !== -1 ? true : false
+}
 
 
 let isEmpty = function (value) {
@@ -76,4 +76,4 @@ let validateEmail = (email) => {
     return String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 };
 
-module.exports={isBodyEmpty,isValid,isVerifyString,isValidMobileNo,isValidPincode,isValidS3Url,isEmpty,isValidJSONstr,removeSpaces,validateEmail}
+module.exports={isBodyEmpty,isValid,isVerifyString,isValidMobileNo,isValidPincode,isValidS3Url,isEmpty,isValidJSONstr,removeSpaces,validateEmail,acceptFileType}

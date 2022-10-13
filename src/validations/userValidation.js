@@ -71,6 +71,16 @@ const isValidFiles=(files)=>{
 }
 
 
-module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles}
+let arr = ["S", "XS", "M", "X", "L", "XXL", "XL"];
+let checkSizes = async function (allSizes){
+    for(let i=0;i<allSizes.length;i++){
+        allSizes[i]=allSizes[i].trim();
+      if(!arr.includes(allSizes[i])) return false
+    }
+    return true;
+   }
+
+
+module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles,checkSizes}
 
 
