@@ -129,16 +129,38 @@ const createUser= async (req,res)=>{
 
 module.exports.createUser=createUser
 
+// TODO ================================= get api ================================================
+const getUser = async (req, res) => {
+    try {
+        let userId = req.params.userId;
 
+        //userId validation
+        if (!userId) {
+            return res.status(400).send({ status: false, message: "Provide UserID" });
+        }
 
+        if (!isValidObjectId(userId)) {
+            return res.status(400).send({ stauts: false, message: "Invalid User Id" });
+        }
 
+        // //authorization
+        // if (userId != req.userId) {
+        //     return res.status(403).send({ status: false, message: "unauthorized access!" });
+        // }
 
+        //if user exist than providing the user's data 
+        const data = await userModel.find({ _id: userId });
+        if (data) {
+            return res.status(200).send({ status: true, message: 'Success', data: data });
+        } else {
+            return res.status(404).send({ status: false, message: `No Data Found by This Id ${userId}` });
+        }
+    } catch (err) {
+        return res.status(500).send({ status: false, message: err.message });
+    }
+};
 
-
-
-
-
-
+module.exports.getUser=getUser
 
 
 //===================================================[USER UPDATE API ==========================//

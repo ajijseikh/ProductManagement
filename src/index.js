@@ -12,7 +12,7 @@ app.use(express.json())
 app.use( multer().any())
 
 // const url="";
-mongoose.connect("mongodb+srv://plutonium-batch:CD0Y7Vi1xxgIRocV@cluster0.78bw9.mongodb.net/test",{useNewUrlParser: true})
+mongoose.connect("mongodb+srv://ajij:7pt2AejwcFh1o56K@cluster0.dwd5pcx.mongodb.net/test",{useNewUrlParser: true})
 .then(()=>console.log("MongoDb is Connected"))
 .catch(err=>console.log(err))
 
