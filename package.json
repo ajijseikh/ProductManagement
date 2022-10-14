@@ -1,25 +1,25 @@
-{
-"name": "projectsmanagement",
-  "version": "1.0.0",
-  "description": "productManagementGroup29",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon src/index.js"
-  },
-  "repository": {
-    "type": "git",
-     "url":"git+https://github.com/ajijseikh/ProductManagement.git"
-  },
-  "author": "Ajij Seikh, Priyanka shrivastava,awneesh kumar,aditya yadav",
-  "license": "ISC",
+{"name":"projectsmanagement",
+"version":"1.0.0",
+"description":"productManagementGroup29",
+"main":"index.js",
+"scripts":{
+"test":"echo \"Error: no test specified\" && exit 1",
+"start":"npx nodemon src/index.js"},
 
-  "dependencies": {
-    "aws-sdk": "^2.1231.0",
-    "bcrypt": "^5.1.0",
-    "express": "^4.18.2",
-    "mongoose": "^6.6.5",
-    "multer": "^1.4.5-lts.1",
-    "nodemon": "^2.0.20"
-  }
+"repository":{
+  "type":"git",
+"url":"git+https://github.com/ajijseikh/ProductManagement.git"
+},
+
+"author":"Ajij Seikh, Priyanka shrivastava,awneesh kumar,aditya yadav","license":"ISC",
+
+"dependencies":{
+"aws-sdk":"^2.1231.0",
+"bcrypt":"^5.1.0",
+"express":"^4.18.2",
+"jsonwebtoken":"^8.5.1",
+"mongoose":"^6.6.5",
+"multer":"^1.4.5-lts.1",
+"nodemon":"^2.0.20"
+}
 }
