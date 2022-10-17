@@ -1,10 +1,5 @@
-const jwt =require('jsonwebtoken')
+
 const userModel=require("../models/userModel");
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken')
-const isValidBody = (value) => {
-    return Object.keys(value).length > 0;
-}
 
 const aws = require('./awsConfig')
 const bcrypt = require('bcrypt')
@@ -98,7 +93,7 @@ const createUser= async (req,res)=>{
 
         // files aws 
         let files = req.files;
-        console.log(files)
+        //console.log(files)
         if (isValidFiles(files)){
            return  res.status(400).send({status:false, message:"profileImage is Required"})
         }
@@ -143,12 +138,7 @@ const getUser = async (req, res) => {
             return res.status(400).send({ stauts: false, message: "Invalid User Id" });
         }
 
-        // //authorization
-        // if (userId != req.userId) {
-        //     return res.status(403).send({ status: false, message: "unauthorized access!" });
-        // }
-
-        //if user exist than providing the user's data 
+       
         const data = await userModel.find({ _id: userId });
         if (data) {
             return res.status(200).send({ status: true, message: 'Success', data: data });
