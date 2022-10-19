@@ -75,4 +75,73 @@ const createCart=async (req,res)=>{
         res.status(500).send({status:false,message:error.message})
     }
 }
-module.exports={createCart}
+
+
+
+
+// ============================================ get api =========================================>
+
+
+const getCart = async function (req, res) {
+  try {
+    let userId = req.params.userId;
+    // if (!mongoose.isValidObjectId(userId)) return res.status(400).send({ status: false, message: " Invalid userId format" });
+
+    const userCheck = await userModel.find({ userId });
+    if (!userCheck) return res.status(404).send({ status: false, message: "User not found" });
+   
+    const cartCheck = await cartModel.findOne({ userId }).populate("items.productId");
+    if (!cartCheck) return res.status(404).send({ status: false, message: "No cart found for this user" });
+
+    return res.status(200).send({ status: true,message:"cart details", data: cartCheck });
+  } catch (err) {return res.status(500).send({ status: false, message: err.message });}
+};
+
+
+
+
+
+//========================================== delete api ==================================
+
+const deleteCart = async function (req, res) {
+
+  try {
+      let userId = req.params.userId;
+      if(!isValidObjectId(userId)){
+          return res.status(400).send({status:false,msg:"userId is not in correct format"})
+      }
+
+      let isValidCart = await cartModel.findOne({ userId: userId })
+
+      //check if cart exist-
+      if (!isValidCart) {
+          return res.status(400).send({ status: false, message: "No such cart exist" })
+      }
+
+      
+      //check if user exist-
+      let isValidUser = await userModel.findById(userId)
+
+
+      if (!isValidUser) {
+          return res.status(400).send({ status: false, message: "User doesn't exist" })
+      }
+
+
+      let deletedProduct = await cartModel.findOneAndUpdate({ userId: userId }, { $set: { items: [], totalPrice: 0, totalItems: 0 } }, { new: true })
+
+
+      return res.status(204).send({ status: true, message: true, data: deletedProduct })
+  } catch (err) {
+      return res.status(500).send({ status: false, message: err.message })
+  }
+}
+
+
+
+
+module.exports={createCart,getCart,deleteCart}
+
+
+
+

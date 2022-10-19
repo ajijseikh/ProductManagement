@@ -6,7 +6,7 @@ const {Authentication, login}=require("../controllers/userLogin")
 
 const {productRegister,getProducts,getProductById,deleteProduct}=require("../controllers/productController")
 
-const {createCart}=require("../controllers/cartController")
+const {createCart,getCart,deleteCart}=require("../controllers/cartController")
 
 router.post("/register",createUser)
 router.put("/user/:userId/profile",UpdateUser)
@@ -24,5 +24,8 @@ router.delete("/products/:productId",deleteProduct)
 
 /// cart api
 router.post("/users/:userId/cart",createCart)
+router.get("/users/:userId/cart",getCart)
+router.delete("/users/:userId/cart",deleteCart)
+
 
 module.exports=router;
