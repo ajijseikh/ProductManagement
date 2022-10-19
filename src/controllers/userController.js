@@ -14,6 +14,7 @@ const {isValidRequest, isValidAddress, isValidFile, isValidObjectId, isValidPhon
 
 const createUser= async (req,res)=>{
     try {
+    //     
           const data =req.body
        //  console.log(data)
         if(!data){
@@ -157,6 +158,7 @@ module.exports.getUser=getUser
 const UpdateUser = async function (req, res) {
     try{
 
+       
     let data = req.body;
     const userId = req.params.userId
 
