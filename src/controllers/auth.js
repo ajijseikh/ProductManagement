@@ -10,7 +10,7 @@ const {isValidObjectId,isValidEmail,isValidPassword}=require("../validations/use
 const Authentication= async (req,res,next)=>{
     try {
          let token=req.headers.authorization
-       //  console.log(token)
+         console.log(token)
           if(!token){
             return res.status(400).send({status:false,message:"token is not present"})
           }
@@ -18,11 +18,11 @@ const Authentication= async (req,res,next)=>{
       let splitToken = token.split(" ")
       
       token = splitToken[1]
-    
+    // console.log(typeof(token))
      jwt.verify(token,"productmanagementgroup29",(error,token)=>{
        
-      if(error)return res.status(400).send({status:false,error:error.message})
-      console.log(token._id)
+      if(error)return res.status(400).send({status:false,error:error.message,message:"today"})
+     // console.log(token._id)
       req["decodedTokenId"]=token._id
       next()
      })

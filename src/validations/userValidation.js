@@ -13,7 +13,7 @@ const isValidObjectId = function (value) {
 
 
 function isValidFile(x) {
-    const regEx = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i
+    const regEx = /\.(gif|jpe?g|tiff?|png|webp|bmp|jpeg)$/i
     return regEx.test(x[0].originalname) // x is array of object so
 }
 
@@ -45,8 +45,8 @@ function isValidPassword(x){
 }
 
 function isValidAddress(x){
-    if(typeof x !== "string") return false;
-    const regEx = /^\s*([\w]+([\s\.\-\:\,][a-zA-Z0-9\s]+)*){2,64}\s*$/
+   
+    const regEx = /^\s*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,100}\s*$/ 
     return regEx.test(x);
 }
 
@@ -82,14 +82,18 @@ let checkSizes = async function (allSizes){
 
 
    let arr1=["pending","completed","canceled"]
-   let checkStatus =function (allStatus){
-    for(let i=0;i<allStatus.length;i++){
-        allStatus[i]=allStatus[i].trim()
-        if(!arr1.includes(allStatus[i])) return false
+   let checkStatus =function (arr12){
+    for(let i=0;i<arr1.length;i++){
+        arr1[i]=arr1[i].trim()
+        if(!arr12.includes(arr1[i])) return false
    }
    return true
    }
+   let numericValue = function (input) {
+	var RE = /^-{0,1}\d*\.{0,1}\d+$/;
+	return (RE.test(input));
+}
 
-module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles,checkSizes,checkStatus }
+module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles,checkSizes,checkStatus,numericValue }
 
 
