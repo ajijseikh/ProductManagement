@@ -239,13 +239,14 @@ Get cart id in request body.
 Get productId in request body.
 Make sure that cart exist.
 Add a product(s) for a user in the cart.
-Make sure the userId in params and in JWT token match.
+Make sure the userId in params and in JWT token match.                
 Make sure the user exist
 Make sure the product(s) are valid and not deleted.
 Get product(s) details in response body.
 Response format
 On success - Return HTTP status 201. Also return the cart document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 PUT /users/:userId/cart (Remove product / Reduce a product's quantity from the cart)
 Updates a cart by either decrementing the quantity of a product by 1 or deleting a product from the cart.
 Get cart id in request body.
@@ -269,6 +270,7 @@ Get product(s) details in response body.
 Response format
 On success - Return HTTP status 200. Return the cart document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 DELETE /users/:userId/cart
 Deletes the cart for the user.
 Make sure that cart exist.
@@ -306,6 +308,7 @@ Get cart details in the request body
 Response format
 On success - Return HTTP status 200. Also return the order document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 PUT /users/:userId/orders
 Updates an order status
 Make sure the userId in params and in JWT token match.
