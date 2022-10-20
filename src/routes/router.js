@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {createUser,UpdateUser}=require("../controllers/userController")
+const {placedOrder}=require("../controllers/orderController")
+
 
 const {Authentication, login}=require("../controllers/userLogin")
 
