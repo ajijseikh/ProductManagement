@@ -125,6 +125,38 @@ const createUser= async (req,res)=>{
 
 module.exports.createUser=createUser
 
+// <======================================login api ============================================>
+const login = async(req, res) =>{
+    try {
+
+    let {email , password} = req.body;
+
+    if(!req.body) return res.status(400).send({status:false, message:"please provide data" })
+
+    if(!email) return res.status(400).send({status:false, message:"Please Enter EmailID" })
+
+    if(!isValidEmail) return res.status(400).send({status:false, message:"Please enter valid email" })
+
+    if(!password) return res.status(400).send({status:false, message:"Please Enter Password" })
+
+    if(!isValidPassword) return res.status(400).send({status:false, message:"Please Enter valid Password" })
+
+    const userDetail = await userModel.findOne({email});
+
+    if(!userDetail) return res.status(404).send({status:false, message:"User not Register" });
+
+    const matchPassword = await bcrypt.compare(password,userDetail.password);
+
+    if(!matchPassword) return res.status(401).send({status:false, message:"Invalid credentials" });
+
+    const token = jwt.sign({_id:userDetail._id},"productmanagementgroup29",{expiresIn:"24h"});
+
+    return res.status(200).send({status:true,message:"login succesfull",data:{userId:userDetail._id,token}})
+
+    } catch (err) { return res.status(500).send({status:false,message:err.message})}
+} 
+module.exports.login=login
+
 // TODO ================================= get api ================================================
 const getUser = async (req, res) => {
     try {

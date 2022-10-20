@@ -81,6 +81,15 @@ let checkSizes = async function (allSizes){
    }
 
 
-module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles,checkSizes}
+   let arr1=["pending","completed","canceled"]
+   let checkStatus =function (allStatus){
+    for(let i=0;i<allStatus.length;i++){
+        allStatus[i]=allStatus[i].trim()
+        if(!arr1.includes(allStatus[i])) return false
+   }
+   return true
+   }
+
+module.exports = {isValidRequest, isValidStatus,isValidAddress, isValidSize, isValidFile, isValidObjectId, isValidPhone, isValidPassword, isValidString, isValidEmail, isValidPincode, removeSpaces,isValidFiles,checkSizes,checkStatus }
 
 
