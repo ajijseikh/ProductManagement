@@ -51,8 +51,5 @@ const orderSchema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-<<<<<<< HEAD
-module.exports = mongoose.model("order", orderSchema)
-=======
+
 module.exports = mongoose.model("order", orderSchema);
->>>>>>> 3986a8b5c2282054ed21e1f4aed96d2572b693c8
